@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+<pre><script src="{% static "js/jquery.js" %}" type="text/javascript"></script>
+<script src="{% static "js/jquery.lazyload.js" %}" type="text/javascript"></script></pre>
+
+
+<h1>Images</h1><br>
+<br>
+<a href="{% url 'index' %}"> Home </a>   <a href="{% url 'uploadImage' %}"> Upload Images</a>
+<br>
+<br>
+{% for image in images %}
+    {{ image.name }}
+    <br>
+    <pre><img class="lazy" src="/media/{{ image.image }}" width=650 height=650​></img></pre>
+    <br>
+{% endfor %}
+
+
+<pre><script src="jquery.js" type="text/javascript"></script>
+<script src="jquery.lazyload.js" type="text/javascript"></script></pre>
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+     $("img.lazy").lazyload({
+         effect : "fadeIn"
+     });
+
+  });
+</script>
